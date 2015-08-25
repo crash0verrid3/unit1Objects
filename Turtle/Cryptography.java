@@ -40,7 +40,21 @@ public class Cryptography
         digest = MessageDigest.getInstance("SHA-256");
         hsh = digest.digest(hash.getBytes("UTF-8"));
         hash2 = new String(hash2);
-        System.out.println(hash2);
+        s = hash2;
+        for(int x=0; x<s.length(); x++){
+            prime = Prime_Number_Generator.randomPrime();
+            current = s.charAt(x) + prime;
+            out += (current + (gSeed / prime) + (prime / gSeed)) + (Prime_Number_Generator.randomPrime() ^ 9) * x + x;
+            hash += String.valueOf(out + gSeed + Prime_Number_Generator.randomPrime());
+            digest = MessageDigest.getInstance("SHA-256");
+            hsh = digest.digest(hash.getBytes("UTF-8"));
+            hash += new String(hsh);
+            gSeed ++;
+        }
+        digest = MessageDigest.getInstance("SHA-256");
+        hsh = digest.digest(hash.getBytes("UTF-8"));
+        s = new String(hsh);
+        System.out.println(s);
     }
     public static void loop() throws IOException, java.security.NoSuchAlgorithmException {
         while(true){
