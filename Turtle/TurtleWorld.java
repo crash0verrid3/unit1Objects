@@ -7,9 +7,15 @@ public class TurtleWorld
         World turtleWorld = new World();
         Turtle turtle = new Turtle(turtleWorld);
         turtle.penDown();
-        for(int x=0; x<200; x++){
-            turtle.forward(x);
-            turtle.turn(x);
+        int x;
+        int y;
+        for(x=0; x<20000; x++){
+            for(y=0; y<200; y++){
+                turtle.forward(10);
+                turtle.turn(70);
+            }
+            turtle.forward(30);
+            turtle.turn(60);
         }
         turtle.penUp();
         turtle.turn(180);
