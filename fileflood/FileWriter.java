@@ -1,6 +1,7 @@
-import java.io.PrintWriter;
-import java.io.BufferedWriter;
-import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 /**
  * Write a description of class FileWriter here.
  * 
@@ -9,13 +10,15 @@ import java.io.Writer;
  */
 public class FileWriter
 {
-    public static void main(String[] args){
-        try(PrintWriter out = new PrintWriter(new BufferedWriter())) {
-            while(true){
-                out.println("Pneumonoultramicroscopicsilicovolcanoconiosis");
-            }
-        }catch (IOException e) {
-            System.out.println(e);
+    public static void main(String[] args) throws java.io.IOException{
+        Path filePath = Paths.get("C:/Spam/file.txt");
+        if (!Files.exists(filePath)) {
+            Files.createFile(filePath);
+        }
+        String from;
+        for(int x = 0;;x++){
+            from = "Pneumonoultramicroscopicsilicovolcanoconiosis\r\n";
+            Files.write(filePath, from.getBytes(), StandardOpenOption.APPEND);
         }
     }
 }
