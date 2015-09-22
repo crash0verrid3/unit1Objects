@@ -22,3 +22,8 @@ public class FileWriter
         }
     }
 }
+/**
+ * @pre None
+ * @post This class, when main is called, will append Pneumonoultramicroscopicsilicovolcanoconiosis to C:\Spam\file.txt, creating it if it doesn't exist.
+ * @return None
+ */
